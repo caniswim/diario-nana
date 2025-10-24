@@ -21,19 +21,19 @@ interface MealCardProps {
 }
 
 const fomeOptions = [
-  { value: "1", label: "1-2", description: "Sem fome" },
-  { value: "2", label: "3-4", description: "Pouca fome" },
-  { value: "3", label: "5-6", description: "Fome moderada", isIdeal: true },
-  { value: "4", label: "7-8", description: "Muita fome" },
-  { value: "5", label: "9-10", description: "Faminto" },
+  { value: "1", label: "1-2", description: "Fome extrema - Fraqueza, tontura, irritabilidade" },
+  { value: "2", label: "3-4", description: "Fome moderada - Estômago roncando, momento ideal para comer", isIdeal: true },
+  { value: "3", label: "5-6", description: "Neutro/Satisfeito - Nem com fome, nem cheio" },
+  { value: "4", label: "7-8", description: "Levemente cheio - Satisfeito demais, leve desconforto" },
+  { value: "5", label: "9-10", description: "Muito cheio - Desconforto abdominal, letargia" },
 ]
 
 const saciedadeOptions = [
-  { value: "1", label: "1-2", description: "Ainda com fome" },
-  { value: "2", label: "3-4", description: "Pouco satisfeito" },
-  { value: "3", label: "5-6", description: "Satisfeito, confortável", isIdeal: true },
-  { value: "4", label: "7-8", description: "Cheio" },
-  { value: "5", label: "9-10", description: "Muito cheio, desconforto" },
+  { value: "1", label: "1-2", description: "Fome extrema - Fraqueza, tontura, irritabilidade" },
+  { value: "2", label: "3-4", description: "Fome moderada - Estômago roncando" },
+  { value: "3", label: "5-6", description: "Neutro/Satisfeito - Confortável, bom momento para parar", isIdeal: true },
+  { value: "4", label: "7-8", description: "Levemente cheio - Satisfeito demais, leve desconforto" },
+  { value: "5", label: "9-10", description: "Muito cheio - Desconforto abdominal, letargia" },
 ]
 
 const sentimentosOptions = [

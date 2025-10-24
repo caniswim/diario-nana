@@ -10,6 +10,7 @@ import { AlertSection } from "@/components/diary/alert-section"
 import { WeeklySummarySection } from "@/components/diary/weekly-summary-section"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
+import { ThemeToggle } from "@/components/ui/theme-toggle"
 import { Calendar, Download, History, Loader2, WifiOff, Home as HomeIcon } from "lucide-react"
 import { formatDate } from "@/lib/utils"
 import { startPeriodicSync } from "@/lib/sync"
@@ -65,6 +66,7 @@ export default function Home() {
               {saving && (
                 <Loader2 className="h-4 w-4 animate-spin text-primary" />
               )}
+              <ThemeToggle />
             </div>
           </div>
           <p className="text-sm text-muted-foreground">
