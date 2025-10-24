@@ -10,44 +10,49 @@
   <!-- Fundo (sem bordas arredondadas - iOS adiciona automaticamente) -->
   <rect width="180" height="180" fill="url(#warmBeigeGradientApple)"/>
 
-  <!-- Passarinho - escala proporcional 180/512 -->
-  <g transform="translate(90, 70)">
+  <!-- Passarinho de lado (calopsita) - escala proporcional 180/512 -->
+  <g transform="translate(90, 73.8)">
     <!-- Corpo -->
-    <ellipse cx="0" cy="0" rx="19.3" ry="22.9" fill="hsl(30 34% 49%)" opacity="0.95"/>
+    <ellipse cx="0" cy="0" rx="21.1" ry="17.6" fill="hsl(30 34% 49%)" opacity="0.95"/>
 
     <!-- Barriga -->
-    <ellipse cx="0" cy="3.5" rx="13.4" ry="16.9" fill="hsl(40 45% 82%)" opacity="0.9"/>
+    <ellipse cx="1.75" cy="2.8" rx="14.8" ry="12.3" fill="hsl(40 45% 82%)" opacity="0.9"/>
 
     <!-- Cabeça -->
-    <circle cx="0" cy="-17.6" r="14.8" fill="hsl(30 34% 49%)" opacity="0.95"/>
+    <circle cx="-12.3" cy="-10.5" r="12.3" fill="hsl(30 34% 49%)" opacity="0.95"/>
 
-    <!-- Olho esquerdo -->
-    <circle cx="-4.2" cy="-19.3" r="3.5" fill="white"/>
-    <circle cx="-4.2" cy="-19.3" r="1.75" fill="hsl(28 16% 25%)"/>
+    <!-- Topete (3 penas estilo calopsita) -->
+    <path d="M -15.8,-19.3 Q -17.6,-26.4 -15.8,-29.9" stroke="hsl(35 60% 55%)" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+    <path d="M -12.3,-21.1 Q -12.3,-28.1 -11.3,-31.6" stroke="hsl(35 60% 55%)" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+    <path d="M -8.8,-20.4 Q -7.7,-27.4 -7,-30.9" stroke="hsl(35 60% 55%)" stroke-width="1.2" fill="none" stroke-linecap="round"/>
 
-    <!-- Olho direito -->
-    <circle cx="4.2" cy="-19.3" r="3.5" fill="white"/>
-    <circle cx="4.2" cy="-19.3" r="1.75" fill="hsl(28 16% 25%)"/>
+    <!-- Bochecha laranja (característica da calopsita) -->
+    <circle cx="-17.6" cy="-8.8" r="2.8" fill="hsl(25 75% 60%)" opacity="0.8"/>
+
+    <!-- Olho -->
+    <circle cx="-17.6" cy="-12.3" r="2.8" fill="white"/>
+    <circle cx="-17.6" cy="-12.3" r="1.4" fill="hsl(28 16% 25%)"/>
 
     <!-- Bico -->
-    <path d="M 0,-14.1 L 5.3,-12.3 L 0,-10.5 Z" fill="hsl(35 60% 55%)"/>
+    <path d="M -22.9,-10.5 L -24.6,-9.5 L -22.9,-8.4 Z" fill="hsl(35 60% 55%)"/>
 
-    <!-- Asa esquerda -->
-    <ellipse cx="-12.3" cy="1.75" rx="8.8" ry="15.8" fill="hsl(33 39% 60%)" opacity="0.85" transform="rotate(-25 -12.3 1.75)"/>
+    <!-- Asa (fechada, de lado) -->
+    <ellipse cx="-1.75" cy="0" rx="12.3" ry="15.8" fill="hsl(33 39% 60%)" opacity="0.85" transform="rotate(-15 -1.75 0)"/>
 
-    <!-- Asa direita -->
-    <ellipse cx="12.3" cy="1.75" rx="8.8" ry="15.8" fill="hsl(33 39% 60%)" opacity="0.85" transform="rotate(25 12.3 1.75)"/>
+    <!-- Detalhes da asa (penas) -->
+    <path d="M -5.3,7 Q -1.75,8.8 1.75,7" stroke="hsl(30 34% 49%)" stroke-width="0.7" fill="none" opacity="0.5"/>
+    <path d="M -5.3,3.5 Q -1.75,5.3 1.75,3.5" stroke="hsl(30 34% 49%)" stroke-width="0.7" fill="none" opacity="0.5"/>
 
-    <!-- Cauda -->
-    <path d="M -7,21.1 Q 0,29.9 7,21.1" fill="hsl(33 39% 60%)" opacity="0.85"/>
+    <!-- Cauda (penas longas) -->
+    <ellipse cx="17.6" cy="3.5" rx="5.3" ry="17.6" fill="hsl(33 39% 60%)" opacity="0.85" transform="rotate(25 17.6 3.5)"/>
 
     <!-- Pernas -->
-    <line x1="-5.3" y1="22.9" x2="-5.3" y2="29.9" stroke="hsl(35 60% 45%)" stroke-width="1.05" stroke-linecap="round"/>
-    <line x1="5.3" y1="22.9" x2="5.3" y2="29.9" stroke="hsl(35 60% 45%)" stroke-width="1.05" stroke-linecap="round"/>
+    <line x1="-2.8" y1="15.8" x2="-2.8" y2="22.9" stroke="hsl(35 60% 45%)" stroke-width="1.05" stroke-linecap="round"/>
+    <line x1="2.8" y1="15.8" x2="2.8" y2="22.9" stroke="hsl(35 60% 45%)" stroke-width="1.05" stroke-linecap="round"/>
 
-    <!-- Pés -->
-    <path d="M -5.3,29.9 L -8.8,29.9 M -5.3,29.9 L -1.75,29.9" stroke="hsl(35 60% 45%)" stroke-width="0.9" stroke-linecap="round" fill="none"/>
-    <path d="M 5.3,29.9 L 1.75,29.9 M 5.3,29.9 L 8.8,29.9" stroke="hsl(35 60% 45%)" stroke-width="0.9" stroke-linecap="round" fill="none"/>
+    <!-- Pés (3 dedos cada) -->
+    <path d="M -2.8,22.9 L -5.3,24.6 M -2.8,22.9 L -2.8,25.3 M -2.8,22.9 L -0.35,24.6" stroke="hsl(35 60% 45%)" stroke-width="0.9" stroke-linecap="round" fill="none"/>
+    <path d="M 2.8,22.9 L 0.35,24.6 M 2.8,22.9 L 2.8,25.3 M 2.8,22.9 L 5.3,24.6" stroke="hsl(35 60% 45%)" stroke-width="0.9" stroke-linecap="round" fill="none"/>
   </g>
 
   <!-- Texto "Nana" -->
