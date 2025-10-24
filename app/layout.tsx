@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/providers/theme-provider";
+import { ThemeColorMeta } from "@/components/theme-color-meta";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -9,7 +10,6 @@ export const metadata: Metadata = {
   title: "Diário de Reconexão",
   description: "Seu diário de alimentação consciente",
   manifest: "/manifest.json",
-  themeColor: "#5B8DEF",
   appleWebApp: {
     capable: true,
     statusBarStyle: "default",
@@ -41,6 +41,7 @@ export default function RootLayout({
           enableSystem={false}
           disableTransitionOnChange={false}
         >
+          <ThemeColorMeta />
           {children}
         </ThemeProvider>
       </body>
