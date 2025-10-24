@@ -10,7 +10,7 @@ import { AlertSection } from "@/components/diary/alert-section"
 import { WeeklySummarySection } from "@/components/diary/weekly-summary-section"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
-import { Calendar, Download, History, Loader2, Wifi, WifiOff, Home as HomeIcon } from "lucide-react"
+import { Calendar, Download, History, Loader2, WifiOff, Home as HomeIcon } from "lucide-react"
 import { formatDate } from "@/lib/utils"
 import { startPeriodicSync } from "@/lib/sync"
 import { Toaster } from "@/components/ui/sonner"
@@ -59,10 +59,8 @@ export default function Home() {
           <div className="flex items-center justify-between mb-1">
             <h1 className="text-xl font-bold">Diário de Reconexão</h1>
             <div className="flex items-center gap-2">
-              {isOnline ? (
-                <Wifi className="h-4 w-4 text-green-600" />
-              ) : (
-                <WifiOff className="h-4 w-4 text-gray-400" />
+              {!isOnline && (
+                <WifiOff className="h-4 w-4 text-muted-foreground" />
               )}
               {saving && (
                 <Loader2 className="h-4 w-4 animate-spin text-primary" />
