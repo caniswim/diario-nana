@@ -45,8 +45,12 @@ export function getThemeById(id: string): Theme | undefined {
 export function applyTheme(theme: Theme, mode: "light" | "dark") {
   if (typeof window === "undefined") return
 
+  console.log(`[applyTheme] Aplicando tema: ${theme.id} (${mode})`)
+
   const colors = mode === "dark" ? theme.dark : theme.light
   const root = document.documentElement
+
+  console.log(`[applyTheme] Cores a aplicar:`, colors)
 
   // Remove todas as variáveis existentes primeiro
   const existingVars = [
@@ -64,8 +68,11 @@ export function applyTheme(theme: Theme, mode: "light" | "dark") {
   // Aplica as novas cores
   Object.entries(colors).forEach(([key, value]) => {
     root.style.setProperty(`--${key}`, value, "important")
+    console.log(`[applyTheme] Aplicado --${key}: ${value}`)
   })
 
   // Força o navegador a recalcular os estilos
   void root.offsetHeight
+
+  console.log(`[applyTheme] Tema ${theme.id} aplicado com sucesso!`)
 }
