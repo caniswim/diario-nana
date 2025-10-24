@@ -5,6 +5,7 @@ import { Label } from "@/components/ui/label"
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 import { Input } from "@/components/ui/input"
 import { Checkbox } from "@/components/ui/checkbox"
+import { Target } from "lucide-react"
 import type { Praticas } from "@/types/diary"
 
 interface PracticesSectionProps {
@@ -14,12 +15,12 @@ interface PracticesSectionProps {
 
 export function PracticesSection({ praticas, onChange }: PracticesSectionProps) {
   return (
-    <SectionCard title="Práticas do Dia" icon="🎯">
-      <div className="space-y-6">
+    <SectionCard title="Práticas do Dia" icon={Target}>
+      <div className="space-y-3">
         {/* Parou no nível 5-6 */}
-        <div className="space-y-3">
-          <Label className="text-base font-semibold">
-            Consegui parar no nível 5-6 em alguma refeição?
+        <div className="space-y-2">
+          <Label className="text-sm font-medium">
+            Parar no nível 5-6?
           </Label>
           <RadioGroup
             value={praticas.parouNivel56}
@@ -35,7 +36,7 @@ export function PracticesSection({ praticas, onChange }: PracticesSectionProps) 
             ].map((option) => (
               <div key={option} className="flex items-center space-x-2">
                 <RadioGroupItem value={option} id={`parou-${option}`} />
-                <Label htmlFor={`parou-${option}`}>{option}</Label>
+                <Label htmlFor={`parou-${option}`} className="text-sm">{option}</Label>
               </div>
             ))}
           </RadioGroup>
@@ -47,6 +48,7 @@ export function PracticesSection({ praticas, onChange }: PracticesSectionProps) 
               onChange={(e) =>
                 onChange({ ...praticas, parouNivel56Qual: e.target.value })
               }
+              className="text-sm h-8"
             />
           )}
 
@@ -57,14 +59,15 @@ export function PracticesSection({ praticas, onChange }: PracticesSectionProps) 
               onChange={(e) =>
                 onChange({ ...praticas, parouNivel56Obs: e.target.value })
               }
+              className="text-sm h-8"
             />
           )}
         </div>
 
         {/* Serviu menos */}
-        <div className="space-y-3">
-          <Label className="text-base font-semibold">
-            Me servi menos e avaliei se queria repetir?
+        <div className="space-y-2">
+          <Label className="text-sm font-medium">
+            Me servi menos?
           </Label>
           <RadioGroup
             value={praticas.serviuMenos}
@@ -76,7 +79,7 @@ export function PracticesSection({ praticas, onChange }: PracticesSectionProps) 
               (option) => (
                 <div key={option} className="flex items-center space-x-2">
                   <RadioGroupItem value={option} id={`serviu-${option}`} />
-                  <Label htmlFor={`serviu-${option}`}>{option}</Label>
+                  <Label htmlFor={`serviu-${option}`} className="text-sm">{option}</Label>
                 </div>
               )
             )}
@@ -89,12 +92,13 @@ export function PracticesSection({ praticas, onChange }: PracticesSectionProps) 
               onChange={(e) =>
                 onChange({ ...praticas, serviuMenosObs: e.target.value })
               }
+              className="text-sm h-8"
             />
           )}
         </div>
 
         {/* Comeu sem compensar */}
-        <div className="space-y-3">
+        <div className="space-y-2">
           <div className="flex items-center space-x-2">
             <Checkbox
               id="comeu-sem-compensar"
@@ -105,9 +109,10 @@ export function PracticesSection({ praticas, onChange }: PracticesSectionProps) 
                   comeuSemCompensar: checked as boolean,
                 })
               }
+              className="h-4 w-4"
             />
-            <Label htmlFor="comeu-sem-compensar" className="text-base font-semibold">
-              Comi algo que realmente queria sem compensar?
+            <Label htmlFor="comeu-sem-compensar" className="text-sm font-medium">
+              Comi algo que queria sem compensar?
             </Label>
           </div>
 
@@ -122,6 +127,7 @@ export function PracticesSection({ praticas, onChange }: PracticesSectionProps) 
                     comeuSemCompensarOque: e.target.value,
                   })
                 }
+                className="text-sm h-8"
               />
               <Input
                 placeholder="Como se sentiu?"
@@ -132,6 +138,7 @@ export function PracticesSection({ praticas, onChange }: PracticesSectionProps) 
                     comeuSemCompensarSentimento: e.target.value,
                   })
                 }
+                className="text-sm h-8"
               />
             </>
           ) : (
@@ -144,6 +151,7 @@ export function PracticesSection({ praticas, onChange }: PracticesSectionProps) 
                   comeuSemCompensarImpediu: e.target.value,
                 })
               }
+              className="text-sm h-8"
             />
           )}
 
@@ -157,8 +165,9 @@ export function PracticesSection({ praticas, onChange }: PracticesSectionProps) 
                   comeuSemCompensarNaoSentiu: checked as boolean,
                 })
               }
+              className="h-4 w-4"
             />
-            <Label htmlFor="nao-sentiu-vontade">
+            <Label htmlFor="nao-sentiu-vontade" className="text-sm">
               Não senti vontade de nada específico
             </Label>
           </div>

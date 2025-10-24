@@ -9,7 +9,8 @@ import { ReflectionSection } from "@/components/diary/reflection-section"
 import { AlertSection } from "@/components/diary/alert-section"
 import { WeeklySummarySection } from "@/components/diary/weekly-summary-section"
 import { Button } from "@/components/ui/button"
-import { Calendar, Download, History, Loader2, Wifi, WifiOff } from "lucide-react"
+import { Badge } from "@/components/ui/badge"
+import { Calendar, Download, History, Loader2, Wifi, WifiOff, Home as HomeIcon } from "lucide-react"
 import { formatDate } from "@/lib/utils"
 import { startPeriodicSync } from "@/lib/sync"
 import { Toaster } from "@/components/ui/sonner"
@@ -52,29 +53,29 @@ export default function Home() {
 
   return (
     <>
-      <main className="container mx-auto px-4 py-6 max-w-3xl pb-24">
+      <main className="container mx-auto px-4 py-4 max-w-3xl pb-24">
         {/* Header */}
-        <div className="mb-6">
-          <div className="flex items-center justify-between mb-2">
-            <h1 className="text-3xl font-bold">Diário de Reconexão</h1>
+        <div className="mb-4">
+          <div className="flex items-center justify-between mb-1">
+            <h1 className="text-xl font-bold">Diário de Reconexão</h1>
             <div className="flex items-center gap-2">
               {isOnline ? (
-                <Wifi className="h-5 w-5 text-green-600" />
+                <Wifi className="h-4 w-4 text-green-600" />
               ) : (
-                <WifiOff className="h-5 w-5 text-gray-400" />
+                <WifiOff className="h-4 w-4 text-gray-400" />
               )}
               {saving && (
-                <Loader2 className="h-5 w-5 animate-spin text-primary" />
+                <Loader2 className="h-4 w-4 animate-spin text-primary" />
               )}
             </div>
           </div>
-          <p className="text-lg text-muted-foreground">
+          <p className="text-sm text-muted-foreground">
             {formatDate(currentDate)}
           </p>
         </div>
 
         {/* Sections */}
-        <div className="space-y-6">
+        <div className="space-y-4">
           <CheckInSection
             checkIn={entry.checkIn}
             onChange={(checkIn) => updateEntry({ checkIn })}
@@ -111,24 +112,20 @@ export default function Home() {
 
       {/* Bottom Navigation */}
       <nav className="fixed bottom-0 left-0 right-0 bg-background border-t shadow-lg">
-        <div className="container mx-auto px-4 py-3 max-w-3xl">
-          <div className="flex items-center justify-around gap-2">
-            <Link href="/historico">
-              <Button variant="outline" className="gap-2">
-                <History className="h-4 w-4" />
-                Histórico
-              </Button>
+        <div className="container mx-auto px-4 py-2 max-w-3xl">
+          <div className="flex items-center justify-around">
+            <Link href="/" className="flex flex-col items-center gap-1 py-2 px-4">
+              <div className="relative">
+                <HomeIcon className="h-6 w-6 text-primary" />
+                <Badge variant="default" className="absolute -top-1 -right-1 h-2 w-2 p-0 bg-primary" />
+              </div>
             </Link>
-            <Link href="/exportar">
-              <Button variant="outline" className="gap-2">
-                <Download className="h-4 w-4" />
-                Exportar
-              </Button>
+            <Link href="/historico" className="flex flex-col items-center gap-1 py-2 px-4">
+              <History className="h-6 w-6 text-muted-foreground" />
             </Link>
-            <Button variant="outline" className="gap-2" disabled>
-              <Calendar className="h-4 w-4" />
-              Hoje
-            </Button>
+            <Link href="/exportar" className="flex flex-col items-center gap-1 py-2 px-4">
+              <Download className="h-6 w-6 text-muted-foreground" />
+            </Link>
           </div>
         </div>
       </nav>

@@ -1,7 +1,8 @@
 "use client"
 
 import { Label } from "@/components/ui/label"
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
+import { Slider } from "@/components/ui/slider"
+import { Badge } from "@/components/ui/badge"
 import { cn } from "@/lib/utils"
 
 interface ScaleOption {
@@ -26,39 +27,45 @@ export function ScaleSelector({
   onChange,
   className,
 }: ScaleSelectorProps) {
+  const currentIndex = value ? options.findIndex(opt => opt.value === value) : -1
+  const currentOption = currentIndex >= 0 ? options[currentIndex] : null
+
+  const handleSliderChange = (values: number[]) => {
+    const index = values[0]
+    if (index >= 0 && index < options.length) {
+      onChange(options[index].value)
+    }
+  }
+
   return (
-    <div className={cn("space-y-3", className)}>
-      <Label className="text-base font-semibold">{label}</Label>
-      <RadioGroup value={value} onValueChange={onChange} className="space-y-2">
-        {options.map((option) => (
-          <div
-            key={option.value}
-            className={cn(
-              "flex items-start space-x-3 rounded-lg border p-3 transition-colors",
-              value === option.value && "bg-primary/5 border-primary",
-              option.isIdeal && "border-green-500/50 bg-green-50/50"
-            )}
-          >
-            <RadioGroupItem value={option.value} id={option.value} className="mt-0.5" />
-            <div className="flex-1 space-y-1">
-              <Label
-                htmlFor={option.value}
-                className="cursor-pointer font-medium flex items-center gap-2"
-              >
-                {option.label}
-                {option.isIdeal && (
-                  <span className="text-xs text-green-600">⭐ Ideal</span>
-                )}
-              </Label>
-              {option.description && (
-                <p className="text-sm text-muted-foreground leading-relaxed">
-                  {option.description}
-                </p>
-              )}
-            </div>
-          </div>
-        ))}
-      </RadioGroup>
+    <div className={cn("space-y-2", className)}>
+      <div className="flex items-center justify-between">
+        <Label className="text-sm font-medium">{label}</Label>
+        {currentOption && (
+          <Badge variant={currentOption.isIdeal ? "default" : "secondary"} className="text-xs">
+            {currentOption.label}
+          </Badge>
+        )}
+      </div>
+
+      <Slider
+        value={[currentIndex >= 0 ? currentIndex : 0]}
+        onValueChange={handleSliderChange}
+        max={options.length - 1}
+        step={1}
+        className="w-full"
+      />
+
+      <div className="flex justify-between text-xs text-muted-foreground px-1">
+        <span>{options[0]?.description || options[0]?.label}</span>
+        <span>{options[options.length - 1]?.description || options[options.length - 1]?.label}</span>
+      </div>
+
+      {currentOption?.description && (
+        <p className="text-xs text-center text-muted-foreground mt-1">
+          {currentOption.description}
+        </p>
+      )}
     </div>
   )
 }

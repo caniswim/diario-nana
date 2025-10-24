@@ -3,6 +3,7 @@
 import { SectionCard } from "./section-card"
 import { Checkbox } from "@/components/ui/checkbox"
 import { Label } from "@/components/ui/label"
+import { AlertTriangle } from "lucide-react"
 import type { SinalAlerta } from "@/types/diary"
 import { cn } from "@/lib/utils"
 
@@ -33,7 +34,7 @@ export function AlertSection({ sinais, onChange }: AlertSectionProps) {
   const hasWarning = sinais.length >= 3
 
   return (
-    <SectionCard title="Sinais de Alerta" icon="⚠️">
+    <SectionCard title="Sinais de Alerta" icon={AlertTriangle}>
       <div className="space-y-4">
         {hasWarning && (
           <div className="p-4 bg-red-50 border border-red-200 rounded-lg">

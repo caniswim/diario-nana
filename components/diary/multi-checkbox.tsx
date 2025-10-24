@@ -28,19 +28,20 @@ export function MultiCheckbox({
   }
 
   return (
-    <div className={cn("space-y-3", className)}>
-      <Label className="text-base font-semibold">{label}</Label>
-      <div className="space-y-2">
+    <div className={cn("space-y-2", className)}>
+      <Label className="text-sm font-medium">{label}</Label>
+      <div className="space-y-1">
         {options.map((option) => (
-          <div key={option} className="flex items-center space-x-3 p-2 rounded-lg hover:bg-accent/50 transition-colors">
+          <div key={option} className="flex items-center space-x-2 p-1.5 rounded hover:bg-accent/50 transition-colors">
             <Checkbox
               id={option}
               checked={value.includes(option)}
               onCheckedChange={() => handleToggle(option)}
+              className="h-4 w-4"
             />
             <Label
               htmlFor={option}
-              className="cursor-pointer flex-1 font-normal"
+              className="cursor-pointer flex-1 text-sm font-normal"
             >
               {option}
             </Label>

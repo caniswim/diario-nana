@@ -2,7 +2,7 @@
 
 import { Button } from "@/components/ui/button"
 import { MealCard } from "./meal-card"
-import { Plus } from "lucide-react"
+import { Plus, Utensils } from "lucide-react"
 import type { Refeicao } from "@/types/diary"
 import { generateId, getCurrentTime, suggestMealName } from "@/lib/utils"
 
@@ -40,13 +40,13 @@ export function MealsSection({ meals, onChange }: MealsSectionProps) {
   return (
     <div className="space-y-4">
       <div className="flex items-center justify-between">
-        <h2 className="text-xl font-bold flex items-center gap-2">
-          <span>🍽️</span>
+        <h2 className="text-base font-bold flex items-center gap-2">
+          <Utensils className="h-4 w-4 text-primary" />
           Refeições do Dia
         </h2>
         <Button onClick={addMeal} size="sm" className="gap-2">
           <Plus className="h-4 w-4" />
-          Adicionar Refeição
+          Adicionar
         </Button>
       </div>
 

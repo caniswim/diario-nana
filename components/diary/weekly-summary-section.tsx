@@ -5,6 +5,7 @@ import { SectionCard } from './section-card'
 import { Textarea } from '@/components/ui/textarea'
 import { Label } from '@/components/ui/label'
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group'
+import { Calendar } from 'lucide-react'
 
 interface WeeklySummarySectionProps {
   resumo: ResumoSemanal
@@ -15,7 +16,7 @@ export function WeeklySummarySection({ resumo, onChange }: WeeklySummarySectionP
   return (
     <SectionCard
       title="Resumo Semanal"
-      icon="📊"
+      icon={Calendar}
     >
       <div className="space-y-6">
         {/* Padrões da Semana */}

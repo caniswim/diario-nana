@@ -3,7 +3,8 @@
 import { useEffect, useState } from "react"
 import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
-import { ArrowLeft, Calendar as CalendarIcon } from "lucide-react"
+import { Badge } from "@/components/ui/badge"
+import { ArrowLeft, Calendar as CalendarIcon, ChevronLeft, ChevronRight, AlertTriangle, CheckCircle2 } from "lucide-react"
 import Link from "next/link"
 import { getAllEntries } from "@/lib/db"
 import type { DiaryEntry } from "@/types/diary"
@@ -53,43 +54,43 @@ export default function HistoricoPage() {
   }
 
   return (
-    <main className="container mx-auto px-4 py-6 max-w-3xl pb-24">
+    <main className="container mx-auto px-4 py-4 max-w-3xl pb-24">
       {/* Header */}
-      <div className="flex items-center gap-4 mb-6">
+      <div className="flex items-center gap-3 mb-4">
         <Link href="/">
-          <Button variant="ghost" size="icon">
-            <ArrowLeft className="h-5 w-5" />
+          <Button variant="ghost" size="icon" className="h-8 w-8">
+            <ArrowLeft className="h-4 w-4" />
           </Button>
         </Link>
-        <h1 className="text-2xl font-bold">Histórico</h1>
+        <h1 className="text-xl font-bold">Histórico</h1>
       </div>
 
       {/* Calendar Navigation */}
-      <Card className="mb-6">
-        <CardContent className="p-4">
-          <div className="flex items-center justify-between mb-4">
-            <Button variant="outline" size="sm" onClick={previousMonth}>
-              ←
+      <Card className="mb-4">
+        <CardContent className="p-3">
+          <div className="flex items-center justify-between mb-3">
+            <Button variant="ghost" size="icon" onClick={previousMonth} className="h-8 w-8">
+              <ChevronLeft className="h-5 w-5" />
             </Button>
-            <h2 className="text-lg font-semibold capitalize">
+            <h2 className="text-base font-semibold capitalize">
               {format(currentMonth, 'MMMM yyyy', { locale: ptBR })}
             </h2>
-            <Button variant="outline" size="sm" onClick={nextMonth}>
-              →
+            <Button variant="ghost" size="icon" onClick={nextMonth} className="h-8 w-8">
+              <ChevronRight className="h-5 w-5" />
             </Button>
           </div>
 
           {/* Calendar Grid */}
-          <div className="grid grid-cols-7 gap-2">
-            {['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb'].map(day => (
-              <div key={day} className="text-center text-sm font-medium text-muted-foreground p-2">
+          <div className="grid grid-cols-7 gap-1">
+            {['D', 'S', 'T', 'Q', 'Q', 'S', 'S'].map((day, idx) => (
+              <div key={idx} className="text-center text-xs font-medium text-muted-foreground p-1">
                 {day}
               </div>
             ))}
 
             {/* Empty cells for days before month starts */}
             {Array.from({ length: monthStart.getDay() }).map((_, i) => (
-              <div key={`empty-${i}`} className="p-2" />
+              <div key={`empty-${i}`} className="p-1" />
             ))}
 
             {/* Days */}
@@ -104,29 +105,26 @@ export default function HistoricoPage() {
                   key={date.toISOString()}
                   href={`/entrada/${format(date, 'yyyy-MM-dd')}`}
                   className={cn(
-                    "aspect-square flex items-center justify-center rounded-lg border-2 transition-all hover:scale-105",
+                    "aspect-square flex items-center justify-center rounded-md border transition-all hover:scale-105 relative",
                     !isSameMonth(date, currentMonth) && "opacity-30",
-                    today && "border-primary bg-primary/10",
-                    hasEntry && !today && "bg-green-50 border-green-200",
-                    hasAlerts && "bg-red-50 border-red-400",
+                    today && "border-primary bg-primary/10 font-bold",
+                    hasEntry && !today && "bg-green-50 border-green-300",
+                    hasAlerts && "bg-red-50 border-red-300",
                     !hasEntry && !today && "border-gray-200 hover:bg-gray-50"
                   )}
                 >
-                  <div className="text-center">
-                    <div className={cn(
-                      "text-sm font-medium",
-                      today && "text-primary font-bold",
-                      hasEntry && "text-green-700",
-                      hasAlerts && "text-red-700"
-                    )}>
-                      {format(date, 'd')}
-                    </div>
-                    {hasEntry && (
-                      <div className="text-xs mt-1">
-                        {hasAlerts ? '⚠️' : '✓'}
-                      </div>
-                    )}
+                  <div className="text-xs">
+                    {format(date, 'd')}
                   </div>
+                  {hasEntry && (
+                    <div className="absolute bottom-0.5 right-0.5">
+                      {hasAlerts ? (
+                        <AlertTriangle className="h-2.5 w-2.5 text-red-600" />
+                      ) : (
+                        <CheckCircle2 className="h-2.5 w-2.5 text-green-600" />
+                      )}
+                    </div>
+                  )}
                 </Link>
               )
             })}
@@ -136,18 +134,20 @@ export default function HistoricoPage() {
 
       {/* Stats */}
       <Card>
-        <CardContent className="p-4">
-          <h3 className="font-semibold mb-3">Estatísticas</h3>
-          <div className="grid grid-cols-2 gap-4 text-sm">
-            <div>
-              <p className="text-muted-foreground">Total de entradas</p>
-              <p className="text-2xl font-bold">{entries.length}</p>
+        <CardContent className="p-3">
+          <h3 className="text-sm font-semibold mb-2">Estatísticas</h3>
+          <div className="flex gap-3">
+            <div className="flex-1">
+              <p className="text-xs text-muted-foreground mb-1">Total</p>
+              <Badge variant="secondary" className="text-base font-bold">
+                {entries.length}
+              </Badge>
             </div>
-            <div>
-              <p className="text-muted-foreground">Com sinais de alerta</p>
-              <p className="text-2xl font-bold text-red-600">
+            <div className="flex-1">
+              <p className="text-xs text-muted-foreground mb-1">Alertas</p>
+              <Badge variant="destructive" className="text-base font-bold">
                 {entries.filter(e => e.sinaisAlerta.length >= 3).length}
-              </p>
+              </Badge>
             </div>
           </div>
         </CardContent>

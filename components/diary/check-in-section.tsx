@@ -4,6 +4,7 @@ import { SectionCard } from "./section-card"
 import { ScaleSelector } from "./scale-selector"
 import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
+import { Sunrise } from "lucide-react"
 import type { CheckIn, NivelEstresse, QualidadeSono } from "@/types/diary"
 
 interface CheckInSectionProps {
@@ -34,37 +35,31 @@ const nivelEstresseOptions = [
 
 export function CheckInSection({ checkIn, onChange }: CheckInSectionProps) {
   return (
-    <SectionCard title="Check-in do Dia" icon="🌅">
-      <div className="space-y-6">
+    <SectionCard title="Check-in do Dia" icon={Sunrise}>
+      <div className="space-y-3">
         {/* Sentimentos */}
-        <div className="space-y-3">
-          <Label className="text-base font-semibold">Como estou me sentindo hoje?</Label>
+        <div className="space-y-2">
+          <Label className="text-sm font-medium">Como estou me sentindo?</Label>
           <div className="space-y-2">
-            <Label htmlFor="emocional" className="text-sm text-muted-foreground">
-              Emocional:
-            </Label>
             <Textarea
               id="emocional"
-              placeholder="Descreva como você está se sentindo emocionalmente..."
+              placeholder="Emocional..."
               value={checkIn.emocional || ""}
               onChange={(e) =>
                 onChange({ ...checkIn, emocional: e.target.value })
               }
               rows={2}
+              className="text-sm"
             />
-          </div>
-          <div className="space-y-2">
-            <Label htmlFor="fisico" className="text-sm text-muted-foreground">
-              Físico:
-            </Label>
             <Textarea
               id="fisico"
-              placeholder="Descreva como você está se sentindo fisicamente..."
+              placeholder="Físico..."
               value={checkIn.fisico || ""}
               onChange={(e) =>
                 onChange({ ...checkIn, fisico: e.target.value })
               }
               rows={2}
+              className="text-sm"
             />
           </div>
         </div>

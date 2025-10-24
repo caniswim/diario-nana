@@ -5,6 +5,7 @@ import { Label } from "@/components/ui/label"
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 import { Textarea } from "@/components/ui/textarea"
 import { MultiCheckbox } from "./multi-checkbox"
+import { BookOpen } from "lucide-react"
 import type { Reflexao } from "@/types/diary"
 
 interface ReflectionSectionProps {
@@ -14,11 +15,11 @@ interface ReflectionSectionProps {
 
 export function ReflectionSection({ reflexao, onChange }: ReflectionSectionProps) {
   return (
-    <SectionCard title="Reflexão do Dia" icon="💭">
-      <div className="space-y-6">
+    <SectionCard title="Reflexão do Dia" icon={BookOpen}>
+      <div className="space-y-3">
         {/* Pensou em comida fora dos horários */}
-        <div className="space-y-3">
-          <Label className="text-base font-semibold">
+        <div className="space-y-2">
+          <Label className="text-sm font-medium">
             Pensei em comida fora dos horários?
           </Label>
           <RadioGroup
@@ -31,26 +32,27 @@ export function ReflectionSection({ reflexao, onChange }: ReflectionSectionProps
               (option) => (
                 <div key={option} className="flex items-center space-x-2">
                   <RadioGroupItem value={option} id={`pensou-${option}`} />
-                  <Label htmlFor={`pensou-${option}`}>{option}</Label>
+                  <Label htmlFor={`pensou-${option}`} className="text-sm">{option}</Label>
                 </div>
               )
             )}
           </RadioGroup>
 
           <Textarea
-            placeholder="Se sim, quando e o que sentia? (opcional)"
+            placeholder="Quando e o que sentia? (opcional)"
             value={reflexao.pensouComidaQuando || ""}
             onChange={(e) =>
               onChange({ ...reflexao, pensouComidaQuando: e.target.value })
             }
             rows={2}
+            className="text-sm"
           />
         </div>
 
         {/* Comeu sem fome física */}
-        <div className="space-y-3">
-          <Label className="text-base font-semibold">
-            Comi sem fome física hoje?
+        <div className="space-y-2">
+          <Label className="text-sm font-medium">
+            Comi sem fome física?
           </Label>
           <RadioGroup
             value={reflexao.comeuSemFome}
@@ -61,7 +63,7 @@ export function ReflectionSection({ reflexao, onChange }: ReflectionSectionProps
             {["Não", "Sim, 1 vez", "Sim, várias vezes"].map((option) => (
               <div key={option} className="flex items-center space-x-2">
                 <RadioGroupItem value={option} id={`sem-fome-${option}`} />
-                <Label htmlFor={`sem-fome-${option}`}>{option}</Label>
+                <Label htmlFor={`sem-fome-${option}`} className="text-sm">{option}</Label>
               </div>
             ))}
           </RadioGroup>
@@ -85,27 +87,29 @@ export function ReflectionSection({ reflexao, onChange }: ReflectionSectionProps
         </div>
 
         {/* Aprendizados */}
-        <div className="space-y-2">
-          <Label>Uma coisa que aprendi sobre mim hoje (opcional):</Label>
+        <div className="space-y-1">
+          <Label className="text-sm">Aprendi sobre mim (opcional):</Label>
           <Textarea
             placeholder="Seus aprendizados..."
             value={reflexao.aprendizado || ""}
             onChange={(e) =>
               onChange({ ...reflexao, aprendizado: e.target.value })
             }
-            rows={3}
+            rows={2}
+            className="text-sm"
           />
         </div>
 
-        <div className="space-y-2">
-          <Label>Nota para mim mesma (opcional):</Label>
+        <div className="space-y-1">
+          <Label className="text-sm">Nota para mim (opcional):</Label>
           <Textarea
             placeholder="Algo que você quer lembrar..."
             value={reflexao.notaParaSi || ""}
             onChange={(e) =>
               onChange({ ...reflexao, notaParaSi: e.target.value })
             }
-            rows={3}
+            rows={2}
+            className="text-sm"
           />
         </div>
       </div>
