@@ -1,0 +1,6 @@
+<svg width="192" height="192" viewBox="0 0 192 192" xmlns="http://www.w3.org/2000/svg">
+  <rect width="192" height="192" fill="#5B8DEF" rx="32"/>
+  <circle cx="96" cy="80" r="28" fill="white" opacity="0.9"/>
+  <path d="M60 120 Q96 140, 132 120" stroke="white" stroke-width="8" fill="none" stroke-linecap="round" opacity="0.9"/>
+  <text x="96" y="165" text-anchor="middle" fill="white" font-family="system-ui, -apple-system, sans-serif" font-size="32" font-weight="600" opacity="0.95">Diário</text>
+</svg>

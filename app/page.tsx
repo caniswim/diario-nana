@@ -7,6 +7,7 @@ import { MealsSection } from "@/components/diary/meals-section"
 import { PracticesSection } from "@/components/diary/practices-section"
 import { ReflectionSection } from "@/components/diary/reflection-section"
 import { AlertSection } from "@/components/diary/alert-section"
+import { WeeklySummarySection } from "@/components/diary/weekly-summary-section"
 import { Button } from "@/components/ui/button"
 import { Calendar, Download, History, Loader2, Wifi, WifiOff } from "lucide-react"
 import { formatDate } from "@/lib/utils"
@@ -18,6 +19,7 @@ export default function Home() {
   const [currentDate] = useState(new Date())
   const { entry, loading, saving, updateEntry } = useDiaryEntry(currentDate)
   const [isOnline, setIsOnline] = useState(true)
+  const isSunday = currentDate.getDay() === 0
 
   // Monitorar status online/offline
   useEffect(() => {
@@ -97,6 +99,13 @@ export default function Home() {
             sinais={entry.sinaisAlerta}
             onChange={(sinaisAlerta) => updateEntry({ sinaisAlerta })}
           />
+
+          {isSunday && entry.resumo_semanal && (
+            <WeeklySummarySection
+              resumo={entry.resumo_semanal}
+              onChange={(resumo_semanal) => updateEntry({ resumo_semanal })}
+            />
+          )}
         </div>
       </main>
 
