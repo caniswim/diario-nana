@@ -10,49 +10,42 @@
   <!-- Fundo arredondado -->
   <rect width="512" height="512" rx="120" fill="url(#warmBeigeGradient)"/>
 
-  <!-- Passarinho de lado (calopsita) -->
-  <g transform="translate(256, 210)">
-    <!-- Corpo -->
-    <ellipse cx="0" cy="0" rx="60" ry="50" fill="hsl(30 34% 49%)" opacity="0.95"/>
+  <!-- Passarinho minimalista gordinho de perfil com coroa de princesa -->
+  <g transform="translate(256, 220)">
+    <!-- Corpo + cabeça em traçado único -->
+    <path d="M -60,-20
+             Q -70,-40 -55,-55
+             Q -40,-65 -25,-60
+             L -10,-55
+             L 0,-50
+             Q 15,-45 35,-30
+             Q 50,-10 50,10
+             Q 48,35 35,50
+             Q 20,60 0,60
+             Q -20,58 -35,45
+             Q -50,30 -58,10
+             Q -62,0 -60,-20 Z"
+             fill="hsl(30 34% 49%)"
+             opacity="0.9"/>
 
-    <!-- Barriga -->
-    <ellipse cx="5" cy="8" rx="42" ry="35" fill="hsl(40 45% 82%)" opacity="0.9"/>
+    <!-- Olhinho simples -->
+    <circle cx="-35" cy="-35" r="5" fill="hsl(28 16% 25%)"/>
 
-    <!-- Cabeça -->
-    <circle cx="-35" cy="-30" r="35" fill="hsl(30 34% 49%)" opacity="0.95"/>
+    <!-- Biquinho -->
+    <path d="M -60,-28 L -75,-22 L -60,-16 Z" fill="hsl(35 60% 55%)"/>
 
-    <!-- Topete (3 penas estilo calopsita) -->
-    <path d="M -45,-55 Q -50,-75 -45,-85" stroke="hsl(35 60% 55%)" stroke-width="3.5" fill="none" stroke-linecap="round"/>
-    <path d="M -35,-60 Q -35,-80 -32,-90" stroke="hsl(35 60% 55%)" stroke-width="3.5" fill="none" stroke-linecap="round"/>
-    <path d="M -25,-58 Q -22,-78 -20,-88" stroke="hsl(35 60% 55%)" stroke-width="3.5" fill="none" stroke-linecap="round"/>
-
-    <!-- Bochecha laranja (característica da calopsita) -->
-    <circle cx="-50" cy="-25" r="8" fill="hsl(25 75% 60%)" opacity="0.8"/>
-
-    <!-- Olho -->
-    <circle cx="-50" cy="-35" r="8" fill="white"/>
-    <circle cx="-50" cy="-35" r="4" fill="hsl(28 16% 25%)"/>
-
-    <!-- Bico -->
-    <path d="M -65,-30 L -70,-27 L -65,-24 Z" fill="hsl(35 60% 55%)"/>
-
-    <!-- Asa (fechada, de lado) -->
-    <ellipse cx="-5" cy="0" rx="35" ry="45" fill="hsl(33 39% 60%)" opacity="0.85" transform="rotate(-15 -5 0)"/>
-
-    <!-- Detalhes da asa (penas) -->
-    <path d="M -15,20 Q -5,25 5,20" stroke="hsl(30 34% 49%)" stroke-width="2" fill="none" opacity="0.5"/>
-    <path d="M -15,10 Q -5,15 5,10" stroke="hsl(30 34% 49%)" stroke-width="2" fill="none" opacity="0.5"/>
-
-    <!-- Cauda (penas longas) -->
-    <ellipse cx="50" cy="10" rx="15" ry="50" fill="hsl(33 39% 60%)" opacity="0.85" transform="rotate(25 50 10)"/>
-
-    <!-- Pernas -->
-    <line x1="-8" y1="45" x2="-8" y2="65" stroke="hsl(35 60% 45%)" stroke-width="3" stroke-linecap="round"/>
-    <line x1="8" y1="45" x2="8" y2="65" stroke="hsl(35 60% 45%)" stroke-width="3" stroke-linecap="round"/>
-
-    <!-- Pés (3 dedos cada) -->
-    <path d="M -8,65 L -15,70 M -8,65 L -8,72 M -8,65 L -1,70" stroke="hsl(35 60% 45%)" stroke-width="2.5" stroke-linecap="round" fill="none"/>
-    <path d="M 8,65 L 1,70 M 8,65 L 8,72 M 8,65 L 15,70" stroke="hsl(35 60% 45%)" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+    <!-- Coroa de princesa -->
+    <g transform="translate(-25, -60)">
+      <!-- Base da coroa -->
+      <path d="M -15,0 L -10,-12 L -5,-5 L 0,-15 L 5,-5 L 10,-12 L 15,0 Z"
+            fill="hsl(45 90% 60%)"
+            stroke="hsl(45 70% 50%)"
+            stroke-width="1.5"/>
+      <!-- Joias da coroa -->
+      <circle cx="-10" cy="-10" r="2.5" fill="hsl(340 80% 60%)"/>
+      <circle cx="0" cy="-13" r="2.5" fill="hsl(200 80% 60%)"/>
+      <circle cx="10" cy="-10" r="2.5" fill="hsl(280 80% 60%)"/>
+    </g>
   </g>
 
   <!-- Texto "Nana" -->

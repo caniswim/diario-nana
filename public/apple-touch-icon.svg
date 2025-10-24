@@ -10,49 +10,42 @@
   <!-- Fundo (sem bordas arredondadas - iOS adiciona automaticamente) -->
   <rect width="180" height="180" fill="url(#warmBeigeGradientApple)"/>
 
-  <!-- Passarinho de lado (calopsita) - escala proporcional 180/512 -->
-  <g transform="translate(90, 73.8)">
-    <!-- Corpo -->
-    <ellipse cx="0" cy="0" rx="21.1" ry="17.6" fill="hsl(30 34% 49%)" opacity="0.95"/>
+  <!-- Passarinho minimalista gordinho de perfil com coroa de princesa - escala 180/512 -->
+  <g transform="translate(90, 77.3)">
+    <!-- Corpo + cabeça em traçado único -->
+    <path d="M -21.1,-7
+             Q -24.6,-14.1 -19.3,-19.3
+             Q -14.1,-22.9 -8.8,-21.1
+             L -3.5,-19.3
+             L 0,-17.6
+             Q 5.3,-15.8 12.3,-10.5
+             Q 17.6,-3.5 17.6,3.5
+             Q 16.9,12.3 12.3,17.6
+             Q 7,21.1 0,21.1
+             Q -7,20.4 -12.3,15.8
+             Q -17.6,10.5 -20.4,3.5
+             Q -21.8,0 -21.1,-7 Z"
+             fill="hsl(30 34% 49%)"
+             opacity="0.9"/>
 
-    <!-- Barriga -->
-    <ellipse cx="1.75" cy="2.8" rx="14.8" ry="12.3" fill="hsl(40 45% 82%)" opacity="0.9"/>
+    <!-- Olhinho simples -->
+    <circle cx="-12.3" cy="-12.3" r="1.75" fill="hsl(28 16% 25%)"/>
 
-    <!-- Cabeça -->
-    <circle cx="-12.3" cy="-10.5" r="12.3" fill="hsl(30 34% 49%)" opacity="0.95"/>
+    <!-- Biquinho -->
+    <path d="M -21.1,-9.8 L -26.4,-7.7 L -21.1,-5.6 Z" fill="hsl(35 60% 55%)"/>
 
-    <!-- Topete (3 penas estilo calopsita) -->
-    <path d="M -15.8,-19.3 Q -17.6,-26.4 -15.8,-29.9" stroke="hsl(35 60% 55%)" stroke-width="1.2" fill="none" stroke-linecap="round"/>
-    <path d="M -12.3,-21.1 Q -12.3,-28.1 -11.3,-31.6" stroke="hsl(35 60% 55%)" stroke-width="1.2" fill="none" stroke-linecap="round"/>
-    <path d="M -8.8,-20.4 Q -7.7,-27.4 -7,-30.9" stroke="hsl(35 60% 55%)" stroke-width="1.2" fill="none" stroke-linecap="round"/>
-
-    <!-- Bochecha laranja (característica da calopsita) -->
-    <circle cx="-17.6" cy="-8.8" r="2.8" fill="hsl(25 75% 60%)" opacity="0.8"/>
-
-    <!-- Olho -->
-    <circle cx="-17.6" cy="-12.3" r="2.8" fill="white"/>
-    <circle cx="-17.6" cy="-12.3" r="1.4" fill="hsl(28 16% 25%)"/>
-
-    <!-- Bico -->
-    <path d="M -22.9,-10.5 L -24.6,-9.5 L -22.9,-8.4 Z" fill="hsl(35 60% 55%)"/>
-
-    <!-- Asa (fechada, de lado) -->
-    <ellipse cx="-1.75" cy="0" rx="12.3" ry="15.8" fill="hsl(33 39% 60%)" opacity="0.85" transform="rotate(-15 -1.75 0)"/>
-
-    <!-- Detalhes da asa (penas) -->
-    <path d="M -5.3,7 Q -1.75,8.8 1.75,7" stroke="hsl(30 34% 49%)" stroke-width="0.7" fill="none" opacity="0.5"/>
-    <path d="M -5.3,3.5 Q -1.75,5.3 1.75,3.5" stroke="hsl(30 34% 49%)" stroke-width="0.7" fill="none" opacity="0.5"/>
-
-    <!-- Cauda (penas longas) -->
-    <ellipse cx="17.6" cy="3.5" rx="5.3" ry="17.6" fill="hsl(33 39% 60%)" opacity="0.85" transform="rotate(25 17.6 3.5)"/>
-
-    <!-- Pernas -->
-    <line x1="-2.8" y1="15.8" x2="-2.8" y2="22.9" stroke="hsl(35 60% 45%)" stroke-width="1.05" stroke-linecap="round"/>
-    <line x1="2.8" y1="15.8" x2="2.8" y2="22.9" stroke="hsl(35 60% 45%)" stroke-width="1.05" stroke-linecap="round"/>
-
-    <!-- Pés (3 dedos cada) -->
-    <path d="M -2.8,22.9 L -5.3,24.6 M -2.8,22.9 L -2.8,25.3 M -2.8,22.9 L -0.35,24.6" stroke="hsl(35 60% 45%)" stroke-width="0.9" stroke-linecap="round" fill="none"/>
-    <path d="M 2.8,22.9 L 0.35,24.6 M 2.8,22.9 L 2.8,25.3 M 2.8,22.9 L 5.3,24.6" stroke="hsl(35 60% 45%)" stroke-width="0.9" stroke-linecap="round" fill="none"/>
+    <!-- Coroa de princesa -->
+    <g transform="translate(-8.8, -21.1)">
+      <!-- Base da coroa -->
+      <path d="M -5.3,0 L -3.5,-4.2 L -1.75,-1.75 L 0,-5.3 L 1.75,-1.75 L 3.5,-4.2 L 5.3,0 Z"
+            fill="hsl(45 90% 60%)"
+            stroke="hsl(45 70% 50%)"
+            stroke-width="0.5"/>
+      <!-- Joias da coroa -->
+      <circle cx="-3.5" cy="-3.5" r="0.9" fill="hsl(340 80% 60%)"/>
+      <circle cx="0" cy="-4.6" r="0.9" fill="hsl(200 80% 60%)"/>
+      <circle cx="3.5" cy="-3.5" r="0.9" fill="hsl(280 80% 60%)"/>
+    </g>
   </g>
 
   <!-- Texto "Nana" -->
