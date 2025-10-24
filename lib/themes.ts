@@ -43,10 +43,29 @@ export function getThemeById(id: string): Theme | undefined {
 }
 
 export function applyTheme(theme: Theme, mode: "light" | "dark") {
+  if (typeof window === "undefined") return
+
   const colors = mode === "dark" ? theme.dark : theme.light
   const root = document.documentElement
 
-  Object.entries(colors).forEach(([key, value]) => {
-    root.style.setProperty(`--${key}`, value)
+  // Remove todas as variáveis existentes primeiro
+  const existingVars = [
+    "background", "foreground", "card", "card-foreground",
+    "popover", "popover-foreground", "primary", "primary-foreground",
+    "secondary", "secondary-foreground", "muted", "muted-foreground",
+    "accent", "accent-foreground", "destructive", "destructive-foreground",
+    "border", "input", "ring"
+  ]
+
+  existingVars.forEach(varName => {
+    root.style.removeProperty(`--${varName}`)
   })
+
+  // Aplica as novas cores
+  Object.entries(colors).forEach(([key, value]) => {
+    root.style.setProperty(`--${key}`, value, "important")
+  })
+
+  // Força o navegador a recalcular os estilos
+  void root.offsetHeight
 }
