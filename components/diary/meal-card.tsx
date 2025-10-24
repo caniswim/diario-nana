@@ -21,31 +21,29 @@ interface MealCardProps {
 }
 
 const fomeOptions = [
-  { value: "0", label: "0", description: "Faminto - Dor de cabeça, tremores, irritabilidade intensa" },
-  { value: "1", label: "1", description: "Fome extrema - Fraqueza, dificuldade de concentração" },
-  { value: "2", label: "2", description: "Muito fome - Estômago roncando alto, baixa energia" },
-  { value: "3", label: "3", description: "Fome moderada - Hora ideal de comer", isIdeal: true },
-  { value: "4", label: "4", description: "Levemente com fome - Primeiros sinais de fome" },
-  { value: "5", label: "5", description: "Neutro - Nem com fome, nem cheio" },
-  { value: "6", label: "6", description: "Satisfeito - Levemente cheio, energia boa" },
-  { value: "7", label: "7", description: "Cheio - Estômago cheio, leve desconforto" },
+  { value: "1", label: "1", description: "Fome extrema/Faminto - Dor de cabeça, tremores, PRECISO COMER AGORA" },
+  { value: "2", label: "2", description: "Muito fome - Estômago roncando alto, difícil esperar mais" },
+  { value: "3", label: "3", description: "Fome moderada - Barriga vazia, hora ideal de comer", isIdeal: true },
+  { value: "4", label: "4", description: "Levemente com fome - Primeiros sinais sutis de fome" },
+  { value: "5", label: "5", description: "Neutro/Confortável - Nem com fome, nem cheio" },
+  { value: "6", label: "6", description: "Satisfeito/Levemente cheio - Alimentado, energia boa" },
+  { value: "7", label: "7", description: "Cheio - Comi demais, leve desconforto" },
   { value: "8", label: "8", description: "Muito cheio - Desconforto abdominal, letargia" },
   { value: "9", label: "9", description: "Empanturrado - Dor abdominal, náusea possível" },
-  { value: "10", label: "10", description: "Empanturrado - Estômago muito distendido, precisa deitar" },
+  { value: "10", label: "10", description: "Empanturrado - Muito distendido, precisa deitar" },
 ]
 
 const saciedadeOptions = [
-  { value: "0", label: "0", description: "Faminto - Dor de cabeça, tremores, irritabilidade intensa" },
-  { value: "1", label: "1", description: "Fome extrema - Fraqueza, dificuldade de concentração" },
-  { value: "2", label: "2", description: "Muito fome - Estômago roncando alto, baixa energia" },
+  { value: "1", label: "1", description: "Fome extrema/Faminto - Dor de cabeça, tremores" },
+  { value: "2", label: "2", description: "Muito fome - Estômago roncando alto" },
   { value: "3", label: "3", description: "Fome moderada - Estômago começando a roncar" },
   { value: "4", label: "4", description: "Levemente com fome - Primeiros sinais de fome" },
-  { value: "5", label: "5", description: "Neutro - Hora ideal de parar", isIdeal: true },
-  { value: "6", label: "6", description: "Satisfeito - Levemente cheio, energia boa" },
-  { value: "7", label: "7", description: "Cheio - Estômago cheio, leve desconforto" },
+  { value: "5", label: "5", description: "Neutro/Confortável - Hora ideal de parar", isIdeal: true },
+  { value: "6", label: "6", description: "Satisfeito/Levemente cheio - Alimentado, sem peso" },
+  { value: "7", label: "7", description: "Cheio - Comi demais, leve desconforto" },
   { value: "8", label: "8", description: "Muito cheio - Desconforto abdominal, letargia" },
   { value: "9", label: "9", description: "Empanturrado - Dor abdominal, náusea possível" },
-  { value: "10", label: "10", description: "Empanturrado - Estômago muito distendido, precisa deitar" },
+  { value: "10", label: "10", description: "Empanturrado - Muito distendido, precisa deitar" },
 ]
 
 const sentimentosOptions = [

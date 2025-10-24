@@ -1,7 +1,7 @@
 // Tipos para o Diário de Reconexão
 
-export type NivelFome = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10;
-export type NivelSaciedade = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10;
+export type NivelFome = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10;
+export type NivelSaciedade = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10;
 export type NivelEstresse = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10;
 export type QualidadeSono = 1 | 2 | 3 | 4 | 5;
 export type NivelSofrimento = 1 | 2 | 3 | 4 | 5;
