@@ -3,9 +3,27 @@
 import { useState, useEffect, useCallback, useRef } from 'react'
 import { getEntry, saveEntry } from '@/lib/db'
 import { syncEntry } from '@/lib/sync'
-import type { DiaryEntry } from '@/types/diary'
+import { getDiaryEntry } from '@/lib/supabase'
+import type { DiaryEntry, DiaryEntryDB } from '@/types/diary'
 import { getDateKey, generateId } from '@/lib/utils'
 import { toast } from 'sonner'
+
+// Converter DiaryEntryDB para DiaryEntry
+function fromDBFormat(dbEntry: DiaryEntryDB): DiaryEntry {
+  return {
+    id: dbEntry.id,
+    date: dbEntry.date,
+    checkIn: dbEntry.check_in,
+    refeicoes: dbEntry.refeicoes,
+    praticas: dbEntry.praticas,
+    reflexao: dbEntry.reflexao,
+    sinaisAlerta: dbEntry.sinais_alerta,
+    resumoSemanal: dbEntry.resumo_semanal,
+    synced: true,
+    createdAt: new Date(dbEntry.created_at).getTime(),
+    updatedAt: new Date(dbEntry.updated_at).getTime(),
+  }
+}
 
 export function useDiaryEntry(date: Date) {
   const [entry, setEntry] = useState<DiaryEntry | null>(null)
@@ -22,11 +40,26 @@ export function useDiaryEntry(date: Date) {
   const loadEntry = async () => {
     setLoading(true)
     try {
-      const existingEntry = await getEntry(dateKey)
+      let existingEntry = await getEntry(dateKey)
+
+      // Se não tem local E está online, busca do servidor primeiro
+      if (!existingEntry && navigator.onLine) {
+        try {
+          const remoteEntry = await getDiaryEntry(dateKey)
+          if (remoteEntry) {
+            existingEntry = fromDBFormat(remoteEntry)
+            await saveEntry(existingEntry)
+          }
+        } catch (error) {
+          console.error('Erro ao buscar entrada do servidor:', error)
+          // Continua mesmo se falhar, criará entrada vazia
+        }
+      }
+
       if (existingEntry) {
         setEntry(existingEntry)
       } else {
-        // Criar nova entrada
+        // Só cria vazia se realmente não existe em nenhum lugar
         const newEntry: DiaryEntry = {
           id: generateId(),
           date: dateKey,
