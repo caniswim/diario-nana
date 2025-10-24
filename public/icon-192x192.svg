@@ -10,25 +10,50 @@
   <!-- Fundo arredondado -->
   <rect width="192" height="192" rx="45" fill="url(#warmBeigeGradient192)"/>
 
-  <!-- Diário (livro) - escala proporcional -->
-  <g transform="translate(96, 67)">
-    <!-- Capa do diário -->
-    <rect x="-30" y="-22" width="60" height="45" rx="3" fill="hsl(30 34% 49%)" opacity="0.9"/>
-    <!-- Páginas -->
-    <rect x="-26" y="-19" width="52" height="38" rx="2" fill="hsl(42 100% 98%)"/>
-    <!-- Linhas das páginas -->
-    <line x1="-19" y1="-11" x2="19" y2="-11" stroke="hsl(32 18% 42%)" stroke-width="0.8" opacity="0.3"/>
-    <line x1="-19" y1="-4" x2="19" y2="-4" stroke="hsl(32 18% 42%)" stroke-width="0.8" opacity="0.3"/>
-    <line x1="-19" y1="4" x2="19" y2="4" stroke="hsl(32 18% 42%)" stroke-width="0.8" opacity="0.3"/>
-    <line x1="-19" y1="11" x2="19" y2="11" stroke="hsl(32 18% 42%)" stroke-width="0.8" opacity="0.3"/>
-    <!-- Marca-páginas -->
-    <rect x="22" y="-22" width="4" height="30" fill="hsl(33 39% 79%)"/>
+  <!-- Passarinho - escala proporcional 192/512 -->
+  <g transform="translate(96, 75)">
+    <!-- Corpo -->
+    <ellipse cx="0" cy="0" rx="20.6" ry="24.4" fill="hsl(30 34% 49%)" opacity="0.95"/>
+
+    <!-- Barriga -->
+    <ellipse cx="0" cy="3.75" rx="14.25" ry="18" fill="hsl(40 45% 82%)" opacity="0.9"/>
+
+    <!-- Cabeça -->
+    <circle cx="0" cy="-18.75" r="15.75" fill="hsl(30 34% 49%)" opacity="0.95"/>
+
+    <!-- Olho esquerdo -->
+    <circle cx="-4.5" cy="-20.6" r="3.75" fill="white"/>
+    <circle cx="-4.5" cy="-20.6" r="1.875" fill="hsl(28 16% 25%)"/>
+
+    <!-- Olho direito -->
+    <circle cx="4.5" cy="-20.6" r="3.75" fill="white"/>
+    <circle cx="4.5" cy="-20.6" r="1.875" fill="hsl(28 16% 25%)"/>
+
+    <!-- Bico -->
+    <path d="M 0,-15 L 5.6,-13.1 L 0,-11.25 Z" fill="hsl(35 60% 55%)"/>
+
+    <!-- Asa esquerda -->
+    <ellipse cx="-13.1" cy="1.875" rx="9.4" ry="16.875" fill="hsl(33 39% 60%)" opacity="0.85" transform="rotate(-25 -13.1 1.875)"/>
+
+    <!-- Asa direita -->
+    <ellipse cx="13.1" cy="1.875" rx="9.4" ry="16.875" fill="hsl(33 39% 60%)" opacity="0.85" transform="rotate(25 13.1 1.875)"/>
+
+    <!-- Cauda -->
+    <path d="M -7.5,22.5 Q 0,31.875 7.5,22.5" fill="hsl(33 39% 60%)" opacity="0.85"/>
+
+    <!-- Pernas -->
+    <line x1="-5.6" y1="24.4" x2="-5.6" y2="31.875" stroke="hsl(35 60% 45%)" stroke-width="1.1" stroke-linecap="round"/>
+    <line x1="5.6" y1="24.4" x2="5.6" y2="31.875" stroke="hsl(35 60% 45%)" stroke-width="1.1" stroke-linecap="round"/>
+
+    <!-- Pés -->
+    <path d="M -5.6,31.875 L -9.4,31.875 M -5.6,31.875 L -1.875,31.875" stroke="hsl(35 60% 45%)" stroke-width="0.9" stroke-linecap="round" fill="none"/>
+    <path d="M 5.6,31.875 L 1.875,31.875 M 5.6,31.875 L 9.4,31.875" stroke="hsl(35 60% 45%)" stroke-width="0.9" stroke-linecap="round" fill="none"/>
   </g>
 
   <!-- Texto "Nana" -->
   <text
     x="96"
-    y="142"
+    y="146"
     font-size="45"
     font-weight="700"
     text-anchor="middle"

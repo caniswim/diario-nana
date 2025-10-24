@@ -10,25 +10,50 @@
   <!-- Fundo (sem bordas arredondadas - iOS adiciona automaticamente) -->
   <rect width="180" height="180" fill="url(#warmBeigeGradientApple)"/>
 
-  <!-- Diário (livro) - escala proporcional para 180x180 -->
-  <g transform="translate(90, 63)">
-    <!-- Capa do diário -->
-    <rect x="-28" y="-21" width="56" height="42" rx="3" fill="hsl(30 34% 49%)" opacity="0.9"/>
-    <!-- Páginas -->
-    <rect x="-24" y="-18" width="48" height="36" rx="2" fill="hsl(42 100% 98%)"/>
-    <!-- Linhas das páginas -->
-    <line x1="-18" y1="-10" x2="18" y2="-10" stroke="hsl(32 18% 42%)" stroke-width="0.7" opacity="0.3"/>
-    <line x1="-18" y1="-3" x2="18" y2="-3" stroke="hsl(32 18% 42%)" stroke-width="0.7" opacity="0.3"/>
-    <line x1="-18" y1="4" x2="18" y2="4" stroke="hsl(32 18% 42%)" stroke-width="0.7" opacity="0.3"/>
-    <line x1="-18" y1="11" x2="18" y2="11" stroke="hsl(32 18% 42%)" stroke-width="0.7" opacity="0.3"/>
-    <!-- Marca-páginas -->
-    <rect x="20" y="-21" width="3.5" height="28" fill="hsl(33 39% 79%)"/>
+  <!-- Passarinho - escala proporcional 180/512 -->
+  <g transform="translate(90, 70)">
+    <!-- Corpo -->
+    <ellipse cx="0" cy="0" rx="19.3" ry="22.9" fill="hsl(30 34% 49%)" opacity="0.95"/>
+
+    <!-- Barriga -->
+    <ellipse cx="0" cy="3.5" rx="13.4" ry="16.9" fill="hsl(40 45% 82%)" opacity="0.9"/>
+
+    <!-- Cabeça -->
+    <circle cx="0" cy="-17.6" r="14.8" fill="hsl(30 34% 49%)" opacity="0.95"/>
+
+    <!-- Olho esquerdo -->
+    <circle cx="-4.2" cy="-19.3" r="3.5" fill="white"/>
+    <circle cx="-4.2" cy="-19.3" r="1.75" fill="hsl(28 16% 25%)"/>
+
+    <!-- Olho direito -->
+    <circle cx="4.2" cy="-19.3" r="3.5" fill="white"/>
+    <circle cx="4.2" cy="-19.3" r="1.75" fill="hsl(28 16% 25%)"/>
+
+    <!-- Bico -->
+    <path d="M 0,-14.1 L 5.3,-12.3 L 0,-10.5 Z" fill="hsl(35 60% 55%)"/>
+
+    <!-- Asa esquerda -->
+    <ellipse cx="-12.3" cy="1.75" rx="8.8" ry="15.8" fill="hsl(33 39% 60%)" opacity="0.85" transform="rotate(-25 -12.3 1.75)"/>
+
+    <!-- Asa direita -->
+    <ellipse cx="12.3" cy="1.75" rx="8.8" ry="15.8" fill="hsl(33 39% 60%)" opacity="0.85" transform="rotate(25 12.3 1.75)"/>
+
+    <!-- Cauda -->
+    <path d="M -7,21.1 Q 0,29.9 7,21.1" fill="hsl(33 39% 60%)" opacity="0.85"/>
+
+    <!-- Pernas -->
+    <line x1="-5.3" y1="22.9" x2="-5.3" y2="29.9" stroke="hsl(35 60% 45%)" stroke-width="1.05" stroke-linecap="round"/>
+    <line x1="5.3" y1="22.9" x2="5.3" y2="29.9" stroke="hsl(35 60% 45%)" stroke-width="1.05" stroke-linecap="round"/>
+
+    <!-- Pés -->
+    <path d="M -5.3,29.9 L -8.8,29.9 M -5.3,29.9 L -1.75,29.9" stroke="hsl(35 60% 45%)" stroke-width="0.9" stroke-linecap="round" fill="none"/>
+    <path d="M 5.3,29.9 L 1.75,29.9 M 5.3,29.9 L 8.8,29.9" stroke="hsl(35 60% 45%)" stroke-width="0.9" stroke-linecap="round" fill="none"/>
   </g>
 
   <!-- Texto "Nana" -->
   <text
     x="90"
-    y="133"
+    y="137"
     font-size="42"
     font-weight="700"
     text-anchor="middle"
