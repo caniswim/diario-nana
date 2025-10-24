@@ -14,9 +14,8 @@ interface WeeklySummarySectionProps {
 export function WeeklySummarySection({ resumo, onChange }: WeeklySummarySectionProps) {
   return (
     <SectionCard
-      title="📊 Resumo Semanal"
-      description="Reflexão sobre a semana (preencha aos domingos)"
-      icon="📝"
+      title="Resumo Semanal"
+      icon="📊"
     >
       <div className="space-y-6">
         {/* Padrões da Semana */}
@@ -26,9 +25,9 @@ export function WeeklySummarySection({ resumo, onChange }: WeeklySummarySectionP
           </Label>
           <Textarea
             id="padroes"
-            value={resumo.padroes_observados || ''}
+            value={resumo.padroes || ''}
             onChange={(e) =>
-              onChange({ ...resumo, padroes_observados: e.target.value })
+              onChange({ ...resumo, padroes: e.target.value })
             }
             placeholder="Ex: Percebi que como mais quando estou estressada, ou que às segundas-feiras tenho mais fome..."
             rows={4}
@@ -43,9 +42,9 @@ export function WeeklySummarySection({ resumo, onChange }: WeeklySummarySectionP
           </Label>
           <Textarea
             id="funcionou"
-            value={resumo.o_que_funcionou || ''}
+            value={resumo.funcionouBem || ''}
             onChange={(e) =>
-              onChange({ ...resumo, o_que_funcionou: e.target.value })
+              onChange({ ...resumo, funcionouBem: e.target.value })
             }
             placeholder="Ex: Consegui pausar antes das refeições, me senti mais conectada com a fome..."
             rows={3}
@@ -77,9 +76,9 @@ export function WeeklySummarySection({ resumo, onChange }: WeeklySummarySectionP
           </Label>
           <Textarea
             id="foco"
-            value={resumo.foco_proxima_semana || ''}
+            value={resumo.proximaSemanaFoco || ''}
             onChange={(e) =>
-              onChange({ ...resumo, foco_proxima_semana: e.target.value })
+              onChange({ ...resumo, proximaSemanaFoco: e.target.value })
             }
             placeholder="Ex: Vou tentar comer mais devagar, prestar atenção nos sinais de fome..."
             rows={3}
@@ -93,9 +92,9 @@ export function WeeklySummarySection({ resumo, onChange }: WeeklySummarySectionP
             Como foi meu nível de sofrimento com alimentação esta semana?
           </Label>
           <RadioGroup
-            value={resumo.nivel_sofrimento?.toString() || ''}
+            value={resumo.nivelSofrimento?.toString() || ''}
             onValueChange={(value) =>
-              onChange({ ...resumo, nivel_sofrimento: parseInt(value) })
+              onChange({ ...resumo, nivelSofrimento: parseInt(value) as 1 | 2 | 3 | 4 | 5 })
             }
           >
             <div className="grid grid-cols-1 gap-3">

@@ -18,25 +18,24 @@ export default function EntradaPage() {
   const router = useRouter()
   const dateParam = params.date as string
 
-  // Validar data
-  const [date, setDate] = useState<Date | null>(null)
-
-  useEffect(() => {
+  // Validar e parsear data
+  const [date, setDate] = useState<Date | null>(() => {
     try {
       const parsedDate = parseISO(dateParam)
-      if (isValid(parsedDate)) {
-        setDate(parsedDate)
-      } else {
-        toast.error('Data inválida')
-        router.push('/')
-      }
-    } catch (error) {
-      toast.error('Erro ao processar data')
+      return isValid(parsedDate) ? parsedDate : null
+    } catch {
+      return null
+    }
+  })
+
+  useEffect(() => {
+    if (!date) {
+      toast.error('Data inválida')
       router.push('/')
     }
-  }, [dateParam, router])
+  }, [date, router])
 
-  const { entry, loading, saving, updateEntry } = useDiaryEntry(dateParam)
+  const { entry, loading, saving, updateEntry } = useDiaryEntry(date || new Date())
 
   const goToPreviousDay = () => {
     if (!date) return
@@ -135,28 +134,28 @@ export default function EntradaPage() {
       {/* Conteúdo do diário */}
       <div className="container max-w-2xl mx-auto px-4 py-6 space-y-6">
         <CheckInSection
-          checkIn={entry.check_in}
-          onChange={(checkIn) => updateEntry({ ...entry, check_in: checkIn })}
+          checkIn={entry.checkIn}
+          onChange={(checkIn) => updateEntry({ checkIn })}
         />
 
         <MealsSection
-          refeicoes={entry.refeicoes}
-          onChange={(refeicoes) => updateEntry({ ...entry, refeicoes })}
+          meals={entry.refeicoes}
+          onChange={(refeicoes) => updateEntry({ refeicoes })}
         />
 
         <PracticesSection
           praticas={entry.praticas}
-          onChange={(praticas) => updateEntry({ ...entry, praticas })}
+          onChange={(praticas) => updateEntry({ praticas })}
         />
 
         <ReflectionSection
           reflexao={entry.reflexao}
-          onChange={(reflexao) => updateEntry({ ...entry, reflexao })}
+          onChange={(reflexao) => updateEntry({ reflexao })}
         />
 
         <AlertSection
-          sinais={entry.sinais_alerta}
-          onChange={(sinais_alerta) => updateEntry({ ...entry, sinais_alerta })}
+          sinais={entry.sinaisAlerta}
+          onChange={(sinaisAlerta) => updateEntry({ sinaisAlerta })}
         />
       </div>
 

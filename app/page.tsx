@@ -100,10 +100,10 @@ export default function Home() {
             onChange={(sinaisAlerta) => updateEntry({ sinaisAlerta })}
           />
 
-          {isSunday && entry.resumo_semanal && (
+          {isSunday && entry.resumoSemanal && (
             <WeeklySummarySection
-              resumo={entry.resumo_semanal}
-              onChange={(resumo_semanal) => updateEntry({ resumo_semanal })}
+              resumo={entry.resumoSemanal}
+              onChange={(resumoSemanal) => updateEntry({ resumoSemanal })}
             />
           )}
         </div>
