@@ -10,82 +10,25 @@
   <!-- Fundo arredondado -->
   <rect width="192" height="192" rx="45" fill="url(#warmBeigeGradient192)"/>
 
-  <!-- Passarinho estilo outline - escala 192/512 -->
-  <g transform="translate(96, 93.75)">
-    <!-- Corpo principal -->
-    <path d="M -18.75,-11.25
-             Q -26.25,-7.5 -28.125,0
-             Q -29.25,11.25 -22.5,20.625
-             Q -15,28.125 0,30
-             Q 15,29.25 24.375,22.5
-             Q 31.875,15 33,3.75
-             Q 33.75,-7.5 28.125,-15
-             Q 22.5,-20.625 13.125,-22.5
-             Q 3.75,-23.25 -3.75,-21.75
-             L -7.5,-23.25
-             Q -11.25,-25.5 -13.125,-27
-             L -10.5,-21.75
-             Q -13.125,-24.375 -15.75,-25.5
-             L -13.125,-20.625
-             Q -16.875,-18.75 -18.75,-11.25 Z"
-             fill="hsl(30 34% 49%)"
-             stroke="hsl(28 16% 25%)"
-             stroke-width="1.5"
-             stroke-linejoin="round"/>
-
-    <!-- Asa -->
-    <path d="M 3.75,0
-             Q 16.875,-1.875 28.125,5.625
-             Q 35.625,13.125 35.625,20.625
-             Q 33.75,24.375 28.125,25.5
-             Q 18.75,26.25 11.25,22.5
-             Q 5.625,18.75 3.75,11.25
-             L 3.75,0 Z"
-             fill="white"
-             stroke="hsl(28 16% 25%)"
-             stroke-width="1.5"
-             stroke-linejoin="round"/>
-
-    <!-- Olho -->
-    <circle cx="-13.125" cy="-5.625" r="3" fill="hsl(28 16% 25%)"/>
-
-    <!-- Bico -->
-    <path d="M -28.125,-3.75 L -35.625,0 L -28.125,3.75 Z"
-          fill="hsl(30 34% 49%)"
-          stroke="hsl(28 16% 25%)"
-          stroke-width="1.5"
-          stroke-linejoin="round"/>
-
-    <!-- Perninhas -->
-    <g stroke="hsl(28 16% 25%)" stroke-width="1.5" stroke-linecap="round" fill="none">
-      <line x1="-3.75" y1="30" x2="-3.75" y2="37.5"/>
-      <path d="M -3.75,37.5 L -6.75,39.375 M -3.75,37.5 L -3.75,40.5 M -3.75,37.5 L -0.75,39.375"/>
-      <line x1="5.625" y1="30" x2="5.625" y2="37.5"/>
-      <path d="M 5.625,37.5 L 2.625,39.375 M 5.625,37.5 L 5.625,40.5 M 5.625,37.5 L 8.625,39.375"/>
-    </g>
-
-    <!-- Topete -->
-    <g stroke="hsl(28 16% 25%)" stroke-width="1.5" stroke-linecap="round" fill="none">
-      <path d="M -11.25,-24.375 Q -13.125,-30 -11.25,-33.75"/>
-      <path d="M -5.625,-25.5 Q -4.5,-31.875 -1.875,-34.5"/>
-    </g>
-
-    <!-- Coroa de princesa -->
-    <g transform="translate(-7.5, -35.625)">
-      <path d="M -7.5,0 L -4.875,-5.625 L -2.625,-1.875 L 0,-6.75 L 2.625,-1.875 L 4.875,-5.625 L 7.5,0 Z"
-            fill="hsl(45 90% 60%)"
-            stroke="hsl(45 70% 50%)"
-            stroke-width="0.75"/>
-      <circle cx="-4.875" cy="-4.875" r="1.125" fill="hsl(340 80% 60%)"/>
-      <circle cx="0" cy="-6" r="1.125" fill="hsl(200 80% 60%)"/>
-      <circle cx="4.875" cy="-4.875" r="1.125" fill="hsl(280 80% 60%)"/>
-    </g>
+  <!-- Diário (livro) - escala proporcional -->
+  <g transform="translate(96, 67)">
+    <!-- Capa do diário -->
+    <rect x="-30" y="-22" width="60" height="45" rx="3" fill="hsl(30 34% 49%)" opacity="0.9"/>
+    <!-- Páginas -->
+    <rect x="-26" y="-19" width="52" height="38" rx="2" fill="hsl(42 100% 98%)"/>
+    <!-- Linhas das páginas -->
+    <line x1="-19" y1="-11" x2="19" y2="-11" stroke="hsl(32 18% 42%)" stroke-width="0.8" opacity="0.3"/>
+    <line x1="-19" y1="-4" x2="19" y2="-4" stroke="hsl(32 18% 42%)" stroke-width="0.8" opacity="0.3"/>
+    <line x1="-19" y1="4" x2="19" y2="4" stroke="hsl(32 18% 42%)" stroke-width="0.8" opacity="0.3"/>
+    <line x1="-19" y1="11" x2="19" y2="11" stroke="hsl(32 18% 42%)" stroke-width="0.8" opacity="0.3"/>
+    <!-- Marca-páginas -->
+    <rect x="22" y="-22" width="4" height="30" fill="hsl(33 39% 79%)"/>
   </g>
 
   <!-- Texto "Nana" -->
   <text
     x="96"
-    y="146"
+    y="142"
     font-size="45"
     font-weight="700"
     text-anchor="middle"
