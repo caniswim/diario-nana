@@ -20,9 +20,9 @@ export function ThemeColorMeta() {
     const theme = getThemeById(currentThemeId)
     if (!theme) return
 
-    // Pega a cor primary do tema atual (light ou dark)
+    // Pega a cor background do tema atual (light ou dark) - mesma cor do body
     const colors = resolvedTheme === "dark" ? theme.dark : theme.light
-    const primaryColor = colors.primary
+    const backgroundColor = colors.background
 
     // Converte HSL para formato que o Safari aceita
     // Formato: hsl(hue sat% light%) -> precisa converter para hex ou rgb
@@ -52,7 +52,7 @@ export function ThemeColorMeta() {
     }
 
     try {
-      const { h, s, l } = parseHSL(primaryColor)
+      const { h, s, l } = parseHSL(backgroundColor)
       const [r, g, b] = hslToRgb(h, s, l)
       const hexColor = `#${((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1)}`
 

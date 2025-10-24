@@ -1,6 +1,38 @@
-<svg width="192" height="192" viewBox="0 0 192 192" xmlns="http://www.w3.org/2000/svg">
-  <rect width="192" height="192" fill="#5B8DEF" rx="32"/>
-  <circle cx="96" cy="80" r="28" fill="white" opacity="0.9"/>
-  <path d="M60 120 Q96 140, 132 120" stroke="white" stroke-width="8" fill="none" stroke-linecap="round" opacity="0.9"/>
-  <text x="96" y="165" text-anchor="middle" fill="white" font-family="system-ui, -apple-system, sans-serif" font-size="32" font-weight="600" opacity="0.95">Diário</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192">
+  <!-- Fundo com gradiente Warm Beige -->
+  <defs>
+    <linearGradient id="warmBeigeGradient192" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:hsl(40 40% 88%);stop-opacity:1" />
+      <stop offset="100%" style="stop-color:hsl(35 35% 80%);stop-opacity:1" />
+    </linearGradient>
+  </defs>
+
+  <!-- Fundo arredondado -->
+  <rect width="192" height="192" rx="45" fill="url(#warmBeigeGradient192)"/>
+
+  <!-- Diário (livro) - escala proporcional -->
+  <g transform="translate(96, 67)">
+    <!-- Capa do diário -->
+    <rect x="-30" y="-22" width="60" height="45" rx="3" fill="hsl(30 34% 49%)" opacity="0.9"/>
+    <!-- Páginas -->
+    <rect x="-26" y="-19" width="52" height="38" rx="2" fill="hsl(42 100% 98%)"/>
+    <!-- Linhas das páginas -->
+    <line x1="-19" y1="-11" x2="19" y2="-11" stroke="hsl(32 18% 42%)" stroke-width="0.8" opacity="0.3"/>
+    <line x1="-19" y1="-4" x2="19" y2="-4" stroke="hsl(32 18% 42%)" stroke-width="0.8" opacity="0.3"/>
+    <line x1="-19" y1="4" x2="19" y2="4" stroke="hsl(32 18% 42%)" stroke-width="0.8" opacity="0.3"/>
+    <line x1="-19" y1="11" x2="19" y2="11" stroke="hsl(32 18% 42%)" stroke-width="0.8" opacity="0.3"/>
+    <!-- Marca-páginas -->
+    <rect x="22" y="-22" width="4" height="30" fill="hsl(33 39% 79%)"/>
+  </g>
+
+  <!-- Texto "Nana" -->
+  <text
+    x="96"
+    y="142"
+    font-size="45"
+    font-weight="700"
+    text-anchor="middle"
+    font-family="Georgia, 'Times New Roman', serif"
+    fill="hsl(28 16% 25%)"
+    letter-spacing="1">Nana</text>
 </svg>
