@@ -39,6 +39,8 @@ function fromDBFormat(dbEntry: DiaryEntryDB): DiaryEntry {
 // Sincronizar entrada específica
 export async function syncEntry(date: string): Promise<boolean> {
   try {
+    console.log(`🔄 [syncEntry] Iniciando sincronização para ${date}`)
+
     // Verificar se Supabase está configurado
     if (!isSupabaseConfigured) {
       console.warn('⚠️ Sincronização pulada: Supabase não configurado')
@@ -46,12 +48,21 @@ export async function syncEntry(date: string): Promise<boolean> {
     }
 
     const localEntry = await getEntry(date)
-    if (!localEntry) return false
+    if (!localEntry) {
+      console.log(`❌ [syncEntry] Entrada local não encontrada para ${date}`)
+      return false
+    }
+
+    console.log(`📝 [syncEntry] Entrada local encontrada. synced=${localEntry.synced}, updatedAt=${new Date(localEntry.updatedAt).toISOString()}`)
 
     // Se já sincronizado e não foi modificado, não faz nada
-    if (localEntry.synced) return true
+    if (localEntry.synced) {
+      console.log(`✅ [syncEntry] Entrada já sincronizada, pulando`)
+      return true
+    }
 
     // Tentar buscar do servidor
+    console.log(`🌐 [syncEntry] Buscando entrada remota...`)
     const remoteEntry = await getDiaryEntry(date)
 
     let entryToSave = localEntry
@@ -59,25 +70,35 @@ export async function syncEntry(date: string): Promise<boolean> {
     // Resolver conflito: prioridade para dados locais mais recentes
     if (remoteEntry) {
       const remoteUpdated = new Date(remoteEntry.updated_at).getTime()
+      console.log(`📊 [syncEntry] Entrada remota encontrada. remoteUpdated=${new Date(remoteUpdated).toISOString()}, localUpdated=${new Date(localEntry.updatedAt).toISOString()}`)
+
       if (remoteUpdated > localEntry.updatedAt) {
-        // Dados remotos são mais recentes, usar eles
+        console.log(`⬇️ [syncEntry] Dados remotos são mais recentes, usando eles`)
         entryToSave = fromDBFormat(remoteEntry)
+      } else {
+        console.log(`⬆️ [syncEntry] Dados locais são mais recentes, fazendo upload`)
       }
+    } else {
+      console.log(`📤 [syncEntry] Nenhuma entrada remota, criando nova`)
     }
 
     // Upload para servidor
+    console.log(`💾 [syncEntry] Fazendo upsert no Supabase...`)
     const success = await upsertDiaryEntry(toDBFormat(entryToSave))
 
     if (success) {
+      console.log(`✅ [syncEntry] Upsert bem-sucedido! Marcando como sincronizado...`)
       // Marcar como sincronizado localmente
       entryToSave.synced = true
       await saveEntry(entryToSave)
+      console.log(`🎉 [syncEntry] Sincronização completa!`)
       return true
     }
 
+    console.error(`❌ [syncEntry] Upsert falhou`)
     return false
   } catch (error) {
-    console.error('Erro ao sincronizar entrada:', error)
+    console.error('❌ [syncEntry] Erro ao sincronizar entrada:', error)
     return false
   }
 }

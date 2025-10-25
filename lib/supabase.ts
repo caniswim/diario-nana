@@ -78,17 +78,26 @@ export async function upsertDiaryEntry(entry: DiaryEntryDB): Promise<boolean> {
     return false
   }
 
-  const { error } = await supabase
+  console.log(`📤 [upsertDiaryEntry] Enviando para Supabase:`, {
+    date: entry.date,
+    id: entry.id,
+    hasCheckIn: Object.keys(entry.check_in).length > 0,
+    numRefeicoes: entry.refeicoes.length,
+  })
+
+  const { data, error } = await supabase
     .from('diary_entries')
     .upsert(entry, {
       onConflict: 'date',
     })
+    .select()
 
   if (error) {
-    console.error('Error upserting diary entry:', error)
+    console.error('❌ [upsertDiaryEntry] Error upserting diary entry:', error)
     return false
   }
 
+  console.log(`✅ [upsertDiaryEntry] Sucesso! Dados salvos:`, data)
   return true
 }
 

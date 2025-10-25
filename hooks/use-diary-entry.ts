@@ -106,13 +106,19 @@ export function useDiaryEntry(date: Date) {
 
       saveTimeoutRef.current = setTimeout(async () => {
         try {
+          console.log(`💾 [useDiaryEntry] Salvando entrada para ${dateKey}`)
           updatedEntry.updatedAt = Date.now()
           updatedEntry.synced = false // Marcar como não sincronizado
           await saveEntry(updatedEntry)
+          console.log(`✅ [useDiaryEntry] Salvo localmente. Online: ${navigator.onLine}`)
 
           // Tentar sincronizar se online
           if (navigator.onLine) {
-            await syncEntry(dateKey)
+            console.log(`🌐 [useDiaryEntry] Chamando syncEntry...`)
+            const syncResult = await syncEntry(dateKey)
+            console.log(`🔄 [useDiaryEntry] Resultado da sincronização: ${syncResult}`)
+          } else {
+            console.log(`📴 [useDiaryEntry] Offline, sincronização adiada`)
           }
 
           toast.success('Salvo automaticamente', {
@@ -120,7 +126,7 @@ export function useDiaryEntry(date: Date) {
             position: 'bottom-center',
           })
         } catch (error) {
-          console.error('Erro ao salvar:', error)
+          console.error('❌ [useDiaryEntry] Erro ao salvar:', error)
           toast.error('Erro ao salvar entrada')
         } finally {
           setSaving(false)
