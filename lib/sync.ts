@@ -1,4 +1,4 @@
-import { getDiaryEntry, upsertDiaryEntry } from './supabase'
+import { getDiaryEntry, upsertDiaryEntry, isSupabaseConfigured } from './supabase'
 import { getEntry, saveEntry, getUnsyncedEntries } from './db'
 import type { DiaryEntry, DiaryEntryDB } from '@/types/diary'
 import { toast } from 'sonner'
@@ -39,6 +39,12 @@ function fromDBFormat(dbEntry: DiaryEntryDB): DiaryEntry {
 // Sincronizar entrada específica
 export async function syncEntry(date: string): Promise<boolean> {
   try {
+    // Verificar se Supabase está configurado
+    if (!isSupabaseConfigured) {
+      console.warn('⚠️ Sincronização pulada: Supabase não configurado')
+      return false
+    }
+
     const localEntry = await getEntry(date)
     if (!localEntry) return false
 

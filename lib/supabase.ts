@@ -4,6 +4,15 @@ import type { DiaryEntryDB } from '@/types/diary'
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || ''
 const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || ''
 
+// Validar se as credenciais estão configuradas
+export const isSupabaseConfigured = Boolean(supabaseUrl && supabaseAnonKey)
+
+if (!isSupabaseConfigured) {
+  console.warn(
+    '⚠️ Supabase não configurado! Configure NEXT_PUBLIC_SUPABASE_URL e NEXT_PUBLIC_SUPABASE_ANON_KEY no arquivo .env.local'
+  )
+}
+
 export const supabase = createClient(supabaseUrl, supabaseAnonKey)
 
 // Database schema para criar no Supabase
@@ -64,6 +73,11 @@ export async function getDiaryEntry(date: string): Promise<DiaryEntryDB | null> 
 }
 
 export async function upsertDiaryEntry(entry: DiaryEntryDB): Promise<boolean> {
+  if (!isSupabaseConfigured) {
+    console.error('❌ Não foi possível salvar no Supabase: credenciais não configuradas')
+    return false
+  }
+
   const { error } = await supabase
     .from('diary_entries')
     .upsert(entry, {

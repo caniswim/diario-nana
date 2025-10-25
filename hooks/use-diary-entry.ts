@@ -3,7 +3,7 @@
 import { useState, useEffect, useCallback, useRef } from 'react'
 import { getEntry, saveEntry } from '@/lib/db'
 import { syncEntry } from '@/lib/sync'
-import { getDiaryEntry } from '@/lib/supabase'
+import { getDiaryEntry, isSupabaseConfigured } from '@/lib/supabase'
 import type { DiaryEntry, DiaryEntryDB } from '@/types/diary'
 import { getDateKey, generateId } from '@/lib/utils'
 import { toast } from 'sonner'
@@ -30,7 +30,19 @@ export function useDiaryEntry(date: Date) {
   const [loading, setLoading] = useState(true)
   const [saving, setSaving] = useState(false)
   const saveTimeoutRef = useRef<NodeJS.Timeout | null>(null)
+  const hasShownWarningRef = useRef(false)
   const dateKey = getDateKey(date)
+
+  // Avisar se Supabase não está configurado (apenas uma vez)
+  useEffect(() => {
+    if (!isSupabaseConfigured && !hasShownWarningRef.current) {
+      hasShownWarningRef.current = true
+      toast.error('⚠️ Supabase não configurado! Seus dados serão salvos apenas localmente.', {
+        duration: 5000,
+        description: 'Configure as variáveis de ambiente no arquivo .env.local para sincronizar com a nuvem.'
+      })
+    }
+  }, [])
 
   // Carregar entrada
   useEffect(() => {

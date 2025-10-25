@@ -215,6 +215,31 @@ O diário segue um template estruturado baseado nos princípios de alimentação
 - **Reflexão**: Pensamentos sobre comida, aprendizados
 - **Sinais de Alerta**: Identificação de comportamentos preocupantes
 
+## 🐛 Troubleshooting
+
+### Os dados não estão sincronizando com o Supabase
+
+Se você vê a mensagem "Salvo automaticamente" mas os dados não aparecem no Supabase:
+
+1. **Verifique se o arquivo `.env.local` existe e está configurado**:
+   ```bash
+   cat .env.local
+   ```
+
+2. **Verifique no console do navegador** (F12 → Console):
+   - ⚠️ Se ver "Supabase não configurado", as variáveis de ambiente não foram carregadas
+   - Certifique-se de que o arquivo `.env.local` está na raiz do projeto
+   - Reinicie o servidor de desenvolvimento (`npm run dev`)
+
+3. **Teste a conexão com o Supabase**:
+   - Abra o console do navegador (F12)
+   - Verifique se há erros relacionados ao Supabase
+   - Confirme que as credenciais estão corretas no `.env.local`
+
+4. **Modo offline funciona sempre**:
+   - Mesmo sem Supabase configurado, todos os dados são salvos localmente no IndexedDB
+   - Você pode configurar o Supabase depois sem perder dados
+
 ---
 
 **Nota**: Este app foi desenvolvido com foco em uso pessoal único. Para uso multi-usuário, seria necessário implementar autenticação e RLS policies apropriadas no Supabase
