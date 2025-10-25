@@ -1,18 +1,19 @@
 import type { NextConfig } from "next";
-// @ts-ignore - next-pwa não tem tipos oficiais
-import withPWA from "next-pwa";
+import withPWAInit from "@ducanh2912/next-pwa";
 
-const nextConfig: NextConfig = {
-  reactStrictMode: true,
-};
-
-export default withPWA({
+const withPWA = withPWAInit({
   dest: "public",
   register: true,
-  skipWaiting: true,
   disable: process.env.NODE_ENV === "development",
-  // Estratégia de cache
-  runtimeCaching: [
+  fallbacks: {
+    document: "/offline",
+  },
+  workboxOptions: {
+    disableDevLogs: true,
+    skipWaiting: true,
+    clientsClaim: true,
+    // Estratégia de cache
+    runtimeCaching: [
     {
       urlPattern: /^https:\/\/wtliawsvevwjfbqhyucj\.supabase\.co\/.*$/,
       handler: "NetworkFirst",
@@ -132,5 +133,12 @@ export default withPWA({
         networkTimeoutSeconds: 10,
       },
     },
-  ],
-})(nextConfig);
+    ],
+  },
+});
+
+const nextConfig: NextConfig = {
+  reactStrictMode: true,
+};
+
+export default withPWA(nextConfig);
