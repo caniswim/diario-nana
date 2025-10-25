@@ -3,6 +3,8 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/providers/theme-provider";
 import { ThemeColorMeta } from "@/components/theme-color-meta";
+import { PWAUpdatePrompt } from "@/components/pwa-update-prompt";
+import { Toaster } from "@/components/ui/sonner";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -42,7 +44,9 @@ export default function RootLayout({
           disableTransitionOnChange={false}
         >
           <ThemeColorMeta />
+          <PWAUpdatePrompt />
           {children}
+          <Toaster />
         </ThemeProvider>
       </body>
     </html>
